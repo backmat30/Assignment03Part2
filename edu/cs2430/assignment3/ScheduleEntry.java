@@ -15,6 +15,20 @@ public final class ScheduleEntry {
         year = otherScheduleEntry.getYear();
     }
 
+    public ScheduleEntry(Semester semester, int year, Course course){
+        this.semester = semester;
+        this.year = year;
+        this.course = course;
+        uuid = UUID.randomUUID();
+    }
+
+    public ScheduleEntry(UUID uuid, Semester semester, int year, Course course){
+        this.uuid = uuid;
+        this.semester = semester;
+        this.year = year;
+        this.course = course;
+    }
+
     public Course getCourse() {
         return course;
     }
