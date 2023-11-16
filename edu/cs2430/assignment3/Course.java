@@ -109,7 +109,7 @@ public class Course {
     public void setprerequisiteCourses(Course[] prerequisiteCourses) {
         this.prerequisiteCourses = new Course[MAX_PREREQUISITES];
         for (Course course : prerequisiteCourses) {
-            if (currentPrerequisiteIndex < MAX_PREREQUISITES) {
+            if (currentPrerequisiteIndex < MAX_PREREQUISITES && course != null) {
                 this.prerequisiteCourses[currentPrerequisiteIndex] = course;
                 currentPrerequisiteIndex += 1;
             }
