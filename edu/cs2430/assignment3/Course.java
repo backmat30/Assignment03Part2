@@ -63,7 +63,7 @@ public class Course {
 
     public boolean validateAddPrerequisiteCourse(Course prerequisiteCourse) {
         return !(currentPrerequisiteIndex >= MAX_PREREQUISITES || containsPrerequisite(prerequisiteCourse)
-                || containsPrerequisiteCycle(prerequisiteCourse));
+                || containsPrerequisiteCycle(prerequisiteCourse) || equals(prerequisiteCourse) || prerequisiteCourse == null);
     }
 
     public int getCurrentPrerequisiteIndex() {
