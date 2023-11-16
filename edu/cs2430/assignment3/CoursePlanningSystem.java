@@ -73,7 +73,11 @@ public class CoursePlanningSystem {
         Schedule[] studentSchedules = new Schedule[0];
         for (Schedule schedule : schedules) {
             if (schedule != null && schedule.getStudentId() == studentId) {
-                System.arraycopy(studentSchedules, 0, studentSchedules, 0, studentSchedules.length + 1);
+                Schedule[] tempSchedules = new Schedule[studentSchedules.length + 1];
+                for(int i = 0; i < studentSchedules.length; i++){
+                    tempSchedules[i] = studentSchedules[i];
+                }
+                studentSchedules = tempSchedules.clone();
                 studentSchedules[studentSchedules.length - 1] = schedule;
             }
         }
