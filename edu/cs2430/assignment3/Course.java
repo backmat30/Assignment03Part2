@@ -57,7 +57,7 @@ public class Course {
             return true;
         }
         for (Course course : prerequisiteCourses) {
-            if (course.containsPrerequisiteCycle(prerequisiteCourse)) {
+            if ( course != null && course.containsPrerequisiteCycle(prerequisiteCourse)) {
                 return true;
             }
         }
