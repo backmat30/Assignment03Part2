@@ -30,7 +30,8 @@ public class Course {
 
     public boolean addPrerequisiteCourse(Course prerequisiteCourse) {
         if (validateAddPrerequisiteCourse(prerequisiteCourse)) {
-            prerequisiteCourses[currentPrerequisiteIndex++] = prerequisiteCourse;
+            prerequisiteCourses[currentPrerequisiteIndex] = prerequisiteCourse;
+            currentPrerequisiteIndex += 1;
             return true;
         }
         return false;
@@ -53,7 +54,7 @@ public class Course {
             return true;
         }
         for (Course course : prerequisiteCourses) {
-            if ( course != null && course.containsPrerequisiteCycle(prerequisiteCourse)) {
+            if (course != null && course.containsPrerequisiteCycle(prerequisiteCourse)) {
                 return true;
             }
         }
@@ -106,7 +107,14 @@ public class Course {
     }
 
     public void setprerequisiteCourses(Course[] prerequisiteCourses) {
-        this.prerequisiteCourses = prerequisiteCourses;
+        this.prerequisiteCourses = new Course[MAX_PREREQUISITES];
+        for (Course course : prerequisiteCourses) {
+            if (currentPrerequisiteIndex < MAX_PREREQUISITES) {
+                this.prerequisiteCourses[currentPrerequisiteIndex] = course;
+                currentPrerequisiteIndex += 1;
+            }
+
+        }
     }
 
     public Program getProgram() {
