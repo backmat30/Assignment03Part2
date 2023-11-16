@@ -13,10 +13,11 @@ public class Course {
     private Program program;
 
     public Course(String name, int number, Program program, int numberOfCredits) {
-        setName(name);
-        setNumber(number);
-        setProgram(program);
-        setNumberOfCredits(numberOfCredits);
+        this(name, number, program, numberOfCredits, new Course[MAX_PREREQUISITES]);
+        // setName(name);
+        // setNumber(number);
+        // setProgram(program);
+        // setNumberOfCredits(numberOfCredits);
     }
 
     public Course(String name, int number, Program program, int numberOfCredits, Course[] prerequisiteCourses) {
@@ -28,9 +29,9 @@ public class Course {
     }
 
     public boolean addPrerequisiteCourse(Course prerequisiteCourse) {
-        if(validateAddPrerequisiteCourse(prerequisiteCourse)){
-            for(int i = 0; i < prerequisiteCourses.length; i++){
-                if(prerequisiteCourses[i] == null){
+        if (validateAddPrerequisiteCourse(prerequisiteCourse)) {
+            for (int i = 0; i < prerequisiteCourses.length; i++) {
+                if (prerequisiteCourses[i] == null) {
                     prerequisiteCourses[i] = prerequisiteCourse;
                     return true;
                 }
@@ -41,6 +42,9 @@ public class Course {
 
     public boolean containsPrerequisite(Course prerequisiteCourse) {
         for (Course course : prerequisiteCourses) {
+            if (course == null)
+                continue;
+
             if (prerequisiteCourse.equals(course)) {
                 return true;
             }
@@ -48,20 +52,21 @@ public class Course {
         return false;
     }
 
-    public boolean containsPrerequisiteCycle(Course prerequisiteCourse){
-        if(containsPrerequisite(prerequisiteCourse)){
+    public boolean containsPrerequisiteCycle(Course prerequisiteCourse) {
+        if (containsPrerequisite(prerequisiteCourse)) {
             return true;
         }
         for (Course course : prerequisiteCourses) {
-            if(course.containsPrerequisiteCycle(prerequisiteCourse)){
+            if (course.containsPrerequisiteCycle(prerequisiteCourse)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean validateAddPrerequisiteCourse(Course prerequisiteCourse){
-        return !(prerequisiteCourses[MAX_PREREQUISITES - 1] != null || containsPrerequisite(prerequisiteCourse) || containsPrerequisiteCycle(prerequisiteCourse));
+    public boolean validateAddPrerequisiteCourse(Course prerequisiteCourse) {
+        return !(prerequisiteCourses[MAX_PREREQUISITES - 1] != null || containsPrerequisite(prerequisiteCourse)
+                || containsPrerequisiteCycle(prerequisiteCourse));
     }
 
     public int getCurrentPrerequisiteIndex() {
