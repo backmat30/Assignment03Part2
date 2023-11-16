@@ -99,7 +99,7 @@ public class Schedule {
     public boolean removeScheduleEntry(Course course) {
         boolean isRemoved = false;
         for (int i = 0; i < MAX_SCHEDULE_ENTRY - 2; i++) {
-            if (scheduleEntries[i].getCourse().equals(course)) {
+            if (scheduleEntries[i] != null && scheduleEntries[i].getCourse().equals(course)) {
                 isRemoved = true;
             }
             if (isRemoved) {
@@ -116,7 +116,7 @@ public class Schedule {
     public boolean removeScheduleEntry(UUID uuid) {
         boolean isRemoved = false;
         for (int i = 0; i < MAX_SCHEDULE_ENTRY - 2; i++) {
-            if (scheduleEntries[i].getUuid().equals(uuid)) {
+            if (scheduleEntries[i] != null && scheduleEntries[i].getUuid().equals(uuid)) {
                 isRemoved = true;
             }
             if (isRemoved) {
