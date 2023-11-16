@@ -18,6 +18,7 @@ public class Schedule {
     public Schedule(Schedule otherSchedule) {
         studentId = otherSchedule.studentId;
         uuid = UUID.randomUUID();
+        scheduleEntries = new ScheduleEntry[MAX_SCHEDULE_ENTRY];
         while (addScheduleEntry(otherSchedule.getScheduleEntry(scheduleEntryIndex)))
             ;
     }
