@@ -54,13 +54,15 @@ public class Schedule {
     }
 
     public Course[] getCoursesForSemester(Semester semester, int year) {
-        Course[] coursesForSemester = new Course[MAX_SCHEDULE_ENTRY];
-        int index = 0;
+        Course[] coursesForSemester = new Course[0];
         for (ScheduleEntry scheduleEntry : scheduleEntries) {
             if (scheduleEntry != null && scheduleEntry.getSemester() == semester && scheduleEntry.getYear() == year) {
-                coursesForSemester[index] = scheduleEntry.getCourse();
-            } else {
-                System.arraycopy(coursesForSemester, 0, coursesForSemester, 0, coursesForSemester.length - 1);
+                Course[] tempCoursesForSemester = new Course[coursesForSemester.length + 1];
+                for(int i = 0; i < coursesForSemester.length; i++){
+                    tempCoursesForSemester[i] = coursesForSemester[i];
+                }
+                coursesForSemester = tempCoursesForSemester.clone();
+                coursesForSemester[coursesForSemester.length - 1] = scheduleEntry.getCourse();
             }
         }
         return coursesForSemester;
