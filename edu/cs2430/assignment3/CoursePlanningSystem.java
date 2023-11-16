@@ -62,7 +62,7 @@ public class CoursePlanningSystem {
 
     public Schedule getScheduleByUuid(UUID uuid) {
         for (Schedule schedule : schedules) {
-            if (schedule.getUuid().equals(uuid)) {
+            if (schedule != null && schedule.getUuid().equals(uuid)) {
                 return schedule;
             }
         }
@@ -72,8 +72,9 @@ public class CoursePlanningSystem {
     public Schedule[] getSchedulesByStudentId(int studentId) {
         Schedule[] studentSchedules = new Schedule[0];
         for (Schedule schedule : schedules) {
-            if (schedule.getStudentId() == studentId) {
+            if (schedule != null && schedule.getStudentId() == studentId) {
                 System.arraycopy(studentSchedules, 0, studentSchedules, 0, studentSchedules.length + 1);
+                studentSchedules[studentSchedules.length - 1] = schedule;
             }
         }
 
