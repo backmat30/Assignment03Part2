@@ -57,7 +57,7 @@ public class Schedule {
         Course[] coursesForSemester = new Course[MAX_SCHEDULE_ENTRY];
         int index = 0;
         for (ScheduleEntry scheduleEntry : scheduleEntries) {
-            if (scheduleEntry.getSemester() == semester && scheduleEntry.getYear() == year) {
+            if (scheduleEntry != null && scheduleEntry.getSemester() == semester && scheduleEntry.getYear() == year) {
                 coursesForSemester[index] = scheduleEntry.getCourse();
             } else {
                 System.arraycopy(coursesForSemester, 0, coursesForSemester, 0, coursesForSemester.length - 1);
