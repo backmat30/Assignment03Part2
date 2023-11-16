@@ -30,12 +30,8 @@ public class Course {
 
     public boolean addPrerequisiteCourse(Course prerequisiteCourse) {
         if (validateAddPrerequisiteCourse(prerequisiteCourse)) {
-            for (int i = 0; i < prerequisiteCourses.length; i++) {
-                if (prerequisiteCourses[i] == null) {
-                    prerequisiteCourses[i] = prerequisiteCourse;
-                    return true;
-                }
-            }
+            prerequisiteCourses[currentPrerequisiteIndex++] = prerequisiteCourse;
+            return true;
         }
         return false;
     }
@@ -65,7 +61,7 @@ public class Course {
     }
 
     public boolean validateAddPrerequisiteCourse(Course prerequisiteCourse) {
-        return !(prerequisiteCourses[MAX_PREREQUISITES - 1] != null || containsPrerequisite(prerequisiteCourse)
+        return !(currentPrerequisiteIndex >= MAX_PREREQUISITES || containsPrerequisite(prerequisiteCourse)
                 || containsPrerequisiteCycle(prerequisiteCourse));
     }
 
