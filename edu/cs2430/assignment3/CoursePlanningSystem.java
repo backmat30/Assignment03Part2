@@ -83,7 +83,7 @@ public class CoursePlanningSystem {
 
     public Student getStudent(int studentID) {
         for (Student student : students) {
-            if(student.getId() == studentID){
+            if(student != null && student.getId() == studentID){
                 return student;
             }
         }
