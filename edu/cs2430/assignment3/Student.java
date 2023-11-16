@@ -4,12 +4,12 @@ public class Student {
     private int id;
     private static final int MAX_SCHEDULES = 5;
     private String name;
-    private static int nextStudentID = 1;
+    private static int nextStudentId = 1;
     private int scheduleIndex;
     private Schedule[] schedules;
 
     public Student(String name){
-        id = nextStudentID++;
+        id = nextStudentId++;
         this.name = name;
         schedules = new Schedule[MAX_SCHEDULES];
     }
