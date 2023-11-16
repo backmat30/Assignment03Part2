@@ -49,7 +49,7 @@ public class CoursePlanningSystem {
 
     public Course getCourse(int courseNumber, Program program) {
         for (Course course : courses) {
-            if (course.getNumber() == courseNumber && course.getProgram() == program) {
+            if (course != null && course.getNumber() == courseNumber && course.getProgram() == program) {
                 return course;
             }
         }
