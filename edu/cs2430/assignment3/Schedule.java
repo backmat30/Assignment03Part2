@@ -23,7 +23,7 @@ public class Schedule {
     }
 
     public boolean addScheduleEntry(ScheduleEntry scheduleEntry) {
-        if (scheduleEntryIndex >= MAX_SCHEDULE_ENTRY) {
+        if (scheduleEntryIndex >= MAX_SCHEDULE_ENTRY || scheduleEntry == null) {
             return false;
         }
         scheduleEntries[scheduleEntryIndex] = scheduleEntry;
@@ -34,7 +34,10 @@ public class Schedule {
     public int calculateCredits() {
         int totalCredits = 0;
         for (ScheduleEntry scheduleEntry : scheduleEntries) {
-            totalCredits += scheduleEntry.getCourse().getNumberOfCredits();
+            if (scheduleEntry != null) {
+                totalCredits += scheduleEntry.getCourse().getNumberOfCredits();
+
+            }
         }
         return totalCredits;
     }
@@ -42,7 +45,7 @@ public class Schedule {
     public int calculateCredits(Semester semester, int year) {
         int totalCredits = 0;
         for (ScheduleEntry scheduleEntry : scheduleEntries) {
-            if (scheduleEntry.getSemester() == semester && scheduleEntry.getYear() == year) {
+            if (scheduleEntry != null && scheduleEntry.getSemester() == semester && scheduleEntry.getYear() == year) {
                 totalCredits += scheduleEntry.getCourse().getNumberOfCredits();
             }
         }
@@ -76,7 +79,7 @@ public class Schedule {
 
     public boolean isCourseInSchedule(Course course) {
         for (ScheduleEntry scheduleEntry : scheduleEntries) {
-            if (scheduleEntry.getCourse().equals(course)) {
+            if (scheduleEntry != null && scheduleEntry.getCourse().equals(course)) {
                 return true;
             }
         }
