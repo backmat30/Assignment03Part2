@@ -35,6 +35,7 @@ public class Student {
     }
 
     public void setSchedules(Schedule[] schedules) {
+        this.schedules = new Schedule[MAX_SCHEDULES];
         scheduleIndex = 0;
         for (Schedule schedule : schedules) {
             if(schedule != null){
