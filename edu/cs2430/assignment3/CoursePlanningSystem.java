@@ -72,7 +72,7 @@ public class CoursePlanningSystem {
     public Schedule[] getSchedulesByStudentId(int studentId) {
         Schedule[] studentSchedules = new Schedule[0];
         for (Schedule schedule : schedules) {
-            if (schedule.getStudentID() == studentId) {
+            if (schedule.getStudentId() == studentId) {
                 System.arraycopy(studentSchedules, 0, studentSchedules, 0, studentSchedules.length + 1);
             }
         }

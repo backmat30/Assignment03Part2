@@ -9,7 +9,7 @@ public class Course {
     private String name;
     private int number;
     private int numberOfCredits;
-    private Course[] prerequisitCourses;
+    private Course[] prerequisiteCourses;
     private Program program;
 
     public Course(String name, int number, Program program, int numberOfCredits) {
@@ -24,14 +24,14 @@ public class Course {
         setNumber(number);
         setProgram(program);
         setNumberOfCredits(numberOfCredits);
-        setPrerequisitCourses(prerequisiteCourses);
+        setprerequisiteCourses(prerequisiteCourses);
     }
 
     public boolean addPrerequisiteCourse(Course prerequisiteCourse) {
         if(validateAddPrerequisiteCourse(prerequisiteCourse)){
-            for(int i = 0; i < prerequisitCourses.length; i++){
-                if(prerequisitCourses[i] == null){
-                    prerequisitCourses[i] = prerequisiteCourse;
+            for(int i = 0; i < prerequisiteCourses.length; i++){
+                if(prerequisiteCourses[i] == null){
+                    prerequisiteCourses[i] = prerequisiteCourse;
                     return true;
                 }
             }
@@ -40,7 +40,7 @@ public class Course {
     }
 
     public boolean containsPrerequisite(Course prerequisiteCourse) {
-        for (Course course : prerequisitCourses) {
+        for (Course course : prerequisiteCourses) {
             if (prerequisiteCourse.equals(course)) {
                 return true;
             }
@@ -52,7 +52,7 @@ public class Course {
         if(containsPrerequisite(prerequisiteCourse)){
             return true;
         }
-        for (Course course : prerequisitCourses) {
+        for (Course course : prerequisiteCourses) {
             if(course.containsPrerequisiteCycle(prerequisiteCourse)){
                 return true;
             }
@@ -61,7 +61,7 @@ public class Course {
     }
 
     public boolean validateAddPrerequisiteCourse(Course prerequisiteCourse){
-        return !(prerequisitCourses[MAX_PREREQUISITES - 1] != null || containsPrerequisite(prerequisiteCourse) || containsPrerequisiteCycle(prerequisiteCourse));
+        return !(prerequisiteCourses[MAX_PREREQUISITES - 1] != null || containsPrerequisite(prerequisiteCourse) || containsPrerequisiteCycle(prerequisiteCourse));
     }
 
     public int getCurrentPrerequisiteIndex() {
@@ -100,12 +100,12 @@ public class Course {
         this.numberOfCredits = numberOfCredits;
     }
 
-    public Course[] getPrerequisitCourses() {
-        return prerequisitCourses;
+    public Course[] getPrerequisiteCourses() {
+        return prerequisiteCourses;
     }
 
-    public void setPrerequisitCourses(Course[] prerequisitCourses) {
-        this.prerequisitCourses = prerequisitCourses;
+    public void setprerequisiteCourses(Course[] prerequisiteCourses) {
+        this.prerequisiteCourses = prerequisiteCourses;
     }
 
     public Program getProgram() {
@@ -124,7 +124,7 @@ public class Course {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + number;
         result = prime * result + numberOfCredits;
-        result = prime * result + Arrays.hashCode(prerequisitCourses);
+        result = prime * result + Arrays.hashCode(prerequisiteCourses);
         result = prime * result + ((program == null) ? 0 : program.hashCode());
         return result;
     }
@@ -149,7 +149,7 @@ public class Course {
             return false;
         if (numberOfCredits != other.numberOfCredits)
             return false;
-        if (!Arrays.equals(prerequisitCourses, other.prerequisitCourses))
+        if (!Arrays.equals(prerequisiteCourses, other.prerequisiteCourses))
             return false;
         if (program != other.program)
             return false;
