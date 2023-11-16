@@ -94,6 +94,7 @@ public class Schedule {
             scheduleEntries[i] = scheduleEntries[i + 1];
         }
         scheduleEntries[MAX_SCHEDULE_ENTRY - 1] = null;
+        scheduleEntryIndex--;
     }
 
     public boolean removeScheduleEntry(Course course) {
@@ -109,6 +110,8 @@ public class Schedule {
         if (isRemoved || scheduleEntries[MAX_SCHEDULE_ENTRY - 1].getCourse().equals(course)) {
             scheduleEntries[MAX_SCHEDULE_ENTRY - 1] = null;
             isRemoved = true;
+            scheduleEntryIndex--;
+            
         }
         return isRemoved;
     }
@@ -126,6 +129,7 @@ public class Schedule {
         if (isRemoved || scheduleEntries[MAX_SCHEDULE_ENTRY - 1].getUuid().equals(uuid)) {
             scheduleEntries[MAX_SCHEDULE_ENTRY - 1] = null;
             isRemoved = true;
+            scheduleEntryIndex--;
         }
         return isRemoved;
     }
